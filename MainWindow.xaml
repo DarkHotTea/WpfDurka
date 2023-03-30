@@ -1,0 +1,469 @@
+﻿<Window x:Class="WpfDurka.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="380" Width="645"
+        WindowStartupLocation="CenterScreen"      
+        MinHeight="350px"
+        MinWidth="470px" WindowStyle="None" ResizeMode="CanResizeWithGrip"  
+        SizeChanged="Window_SizeChanged"        
+        >
+
+    <Window.Background>
+        <ImageBrush ImageSource="Img/BackLight.jpg"/>
+    </Window.Background>
+
+    <Grid Margin="10,0,0,10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.0725*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel 
+            Orientation="Horizontal" 
+            Grid.Row="0" 
+            HorizontalAlignment="Right">
+            <Button 
+                x:Name="MaxBtn" 
+                Click="Button_Click_2" 
+                Style="{StaticResource TechBtn}">
+                <materialDesign:PackIcon 
+                    x:Name="MaxBtn_ico" 
+                    Kind="WindowMaximize" 
+                    Foreground="#FF00B5FF" 
+                    HorizontalAlignment="Center"/>
+            </Button>
+            <Button 
+                x:Name="CloseBtn" 
+                Click="Button_Click_1" 
+                Style="{StaticResource TechBtn}">
+                <materialDesign:PackIcon 
+                    x:Name="CloseBtn_ico" 
+                    Kind="Power" 
+                    Foreground="Black" 
+                    HorizontalAlignment="Center"/>
+            </Button>
+        </StackPanel>
+
+        <StackPanel 
+            Grid.Row="1"
+            x:Name="Header">
+
+            <Grid 
+                MinHeight="30px" 
+                Height="40">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.35*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    VerticalAlignment="Center"
+                    Grid.Column="0">
+
+                    <Viewbox Stretch="UniformToFill">
+                        <Image Source="Img/Group2.png"/>
+                    </Viewbox>
+
+                    <!--<Border Style="{StaticResource Logo_Menu}">
+
+                        <Label Width="30px" Height="30px">
+                            <Polyline Points="6,0 6,18 20,13 13.5,7.5" Stroke="#FFE0FCFF" StrokeThickness="3.5"/>
+                        </Label>
+
+                    </Border>
+
+                    <Label Style="{StaticResource First_label}" Content="Частная клиника"/>
+
+                    <Label Content="HelpPlus" Style="{StaticResource Second_label}"/>-->
+
+                </StackPanel>
+
+                <StackPanel 
+                    HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Center" 
+                    Width="auto" 
+                    Grid.Column="1">
+
+                    <UniformGrid 
+                        Columns="3" 
+                        Rows="1">
+
+                        <StackPanel 
+                            Cursor="Hand" 
+                            MouseDown="StackPanel_MouseDown_1" 
+                            Style="{StaticResource StackPanel_Menu}" 
+                            Grid.Column="0">
+
+                            <Label 
+                                Padding="0"
+                                Foreground="#FF00DAFF" 
+                                Name="Label_1" 
+                                Content="О нас"/>
+                            <Rectangle 
+                                Style="{StaticResource Rectangle_Menu}"
+                                x:Name="Rectangle_1" Width="auto"/>
+
+                        </StackPanel>
+
+                        <StackPanel 
+                            MouseDown="StackPanel_MouseDown_2"
+                            Style="{StaticResource StackPanel_Menu}"
+                            Grid.Column="1">
+
+                            <Label 
+                                Name="Label_2" 
+                                Content="Оборудование"/>
+                            <Rectangle 
+                                Style="{StaticResource Rectangle_Menu}" 
+                                x:Name="Rectangle_2"/>
+
+                        </StackPanel>
+
+                        <StackPanel 
+                            MouseDown="StackPanel_MouseDown_3"
+                            Style="{StaticResource StackPanel_Menu}"
+                            Grid.Column="2">
+
+                            <Label 
+                                Name="Label_3" 
+                                Content="Задать вопрос"/>
+                            <Rectangle 
+                                x:Name="Rectangle_3"
+                                Style="{StaticResource Rectangle_Menu}"/>
+
+                        </StackPanel>
+
+                    </UniformGrid>
+
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel
+            VerticalAlignment="Center" 
+            Grid.Row="2" 
+            x:Name="Main">
+
+            <StackPanel
+                VerticalAlignment="Center" 
+                Visibility="Visible"
+                x:Name="Tab_1">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="0.6*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel 
+                        VerticalAlignment="Center" 
+                        Grid.Row="0" Grid.Column="0">
+
+                        <TextBlock 
+                            x:Name="About_Title" 
+                            Style="{StaticResource AboutTitle}"/>
+
+                        <TextBlock 
+                            x:Name="About_SubTitle" 
+                            Style="{StaticResource AboutSubTitle}"/>
+
+                    </StackPanel>
+
+                    <StackPanel 
+                        x:Name="PanelOfDoctor" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Center" 
+                        Grid.Column="1">
+
+                        <Border
+                            x:Name="Border1" 
+                            BorderBrush="Transparent" 
+                            CornerRadius="0,95,95,95">
+
+                            <Border.Background>
+                                <ImageBrush 
+                                    ImageSource="Img/Doctor-medecine.jpg" 
+                                    Stretch="Uniform"/>
+                            </Border.Background>
+
+                            <Rectangle 
+                                Height="200" Width="200" 
+                                x:Name="Photo_Doctor">
+
+                                <Rectangle.OpacityMask>
+
+                                    <VisualBrush Visual="{Binding ElementName = Border1}"/>
+
+                                </Rectangle.OpacityMask>
+
+                            </Rectangle>
+
+                        </Border>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </StackPanel>
+
+            <StackPanel 
+                VerticalAlignment="Stretch" 
+                Visibility="Collapsed"
+                x:Name="Tab_2">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <Image 
+                            Margin="30" 
+                            Source="Img/LapTop.png"/>
+                    </StackPanel>
+
+                    <StackPanel 
+                        Grid.Column="1" 
+                        VerticalAlignment="Center">
+                        
+                        <Grid>
+                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="0.2*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel 
+                                x:Name="List_Stack1" 
+                                Grid.Row="0" 
+                                Margin="0,10,0,10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <materialDesign:PackIcon 
+                                        Foreground="#FF00DAFF" 
+                                        x:Name="Icon_1" 
+                                        VerticalAlignment="Center" 
+                                        Kind="Cpu64Bit" 
+                                        Grid.Column="0" Grid.RowSpan="2"/>
+
+                                    <TextBlock
+                                        x:Name="List_Title1" 
+                                        Grid.Row="0" Grid.Column="1" 
+                                        FontWeight="Bold" 
+                                        Text="Процессор:"/>
+                                    <TextBlock 
+                                        x:Name="List_Mark1"
+                                        Grid.Row="1" Grid.Column="1" 
+                                        Text="Intel i5-11300H 3.10GHz "/>
+                                </Grid>
+                            </StackPanel>
+                            
+                            <StackPanel 
+                                x:Name="List_Stack2" 
+                                Grid.Row="1" 
+                                Margin="0,10,0,10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <materialDesign:PackIcon 
+                                        Foreground="#FF00DAFF" 
+                                        VerticalAlignment="Center" 
+                                        Kind="GraphicsProcessingUnit" 
+                                        x:Name="Icon_2" 
+                                        Grid.Column="0" Grid.RowSpan="2"/>
+
+                                    <TextBlock
+                                        x:Name="List_Title2" 
+                                        Grid.Row="0" Grid.Column="1" 
+                                        FontWeight="Bold" 
+                                        Text="Графика:"/>
+                                    <TextBlock
+                                        x:Name="List_Mark2"
+                                        Grid.Row="1" Grid.Column="1" 
+                                        Text="Intel Iris Xe Graphics"/>
+                                </Grid>
+                            </StackPanel>
+
+                            <StackPanel 
+                                x:Name="List_Stack3" 
+                                Grid.Row="2"
+                                Margin="0,10,0,10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <materialDesign:PackIcon 
+                                        VerticalAlignment="Center" 
+                                        Foreground="#FF00DAFF" 
+                                        x:Name="Icon_3" 
+                                        Kind="DataUsage" 
+                                        Grid.Column="0" Grid.RowSpan="2"/>
+
+                                    <TextBlock 
+                                        x:Name="List_Title3" 
+                                        Grid.Row="0" Grid.Column="1" 
+                                        FontWeight="Bold" 
+                                        Text="Объем памяти: :"/>
+                                    <TextBlock
+                                        x:Name="List_Mark3" 
+                                        Grid.Row="1" Grid.Column="1" 
+                                        Text="16 ГБ DDR4"/>
+                                </Grid>
+                            </StackPanel>
+
+                            <StackPanel 
+                                x:Name="List_Stack4" 
+                                Margin="0,10,0,10" 
+                                Grid.Row="3">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <materialDesign:PackIcon
+                                        VerticalAlignment="Center" 
+                                        Foreground="#FF00DAFF" 
+                                        x:Name="Icon_4" 
+                                        Kind="Harddisk" 
+                                        Grid.Column="0" Grid.RowSpan="2"/>
+
+                                    <TextBlock
+                                        x:Name="List_Title4" 
+                                        Grid.Row="0" Grid.Column="1" 
+                                        FontWeight="Bold" 
+                                        Text="Накопитель:"/>
+                                    <TextBlock 
+                                        x:Name="List_Mark4"
+                                        Grid.Row="1" Grid.Column="1"
+                                        Text="512 ГБ SSD"/>
+                                </Grid>
+                            </StackPanel>
+
+                            <StackPanel 
+                                x:Name="List_Stack5" 
+                                Grid.Row="4" 
+                                Margin="0,10,0,10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <materialDesign:PackIcon 
+                                        VerticalAlignment="Center" 
+                                        Foreground="#FF00DAFF" 
+                                        x:Name="Icon_5" 
+                                        Kind="Monitor"
+                                        Grid.Column="0" Grid.RowSpan="2"/>
+
+                                    <TextBlock
+                                        x:Name="List_Title5" 
+                                        Grid.Row="0" Grid.Column="1" 
+                                        FontWeight="Bold" 
+                                        Text="Экран:"/>
+                                    <TextBlock 
+                                        x:Name="List_Mark5" 
+                                        Grid.Row="1" Grid.Column="1" 
+                                        Text="16:9 1920 * 1080"/>
+                                </Grid>
+                                
+                            </StackPanel>
+
+                        </Grid>
+                        
+                    </StackPanel>
+
+                </Grid>
+
+            </StackPanel>
+
+            <StackPanel 
+                VerticalAlignment="Stretch" 
+                Visibility="Collapsed" 
+                x:Name="Tab_3">
+
+                <StackPanel 
+                    Margin="30,0,30,0" 
+                    VerticalAlignment="Center">
+
+                    <TextBlock 
+                        x:Name="Question_Title" 
+                        Style="{StaticResource QTitle}"/>
+
+                    <Border Style="{StaticResource QBorder}">
+                        <TextBox 
+                            x:Name="Question_Box"
+                            Style="{StaticResource QBox}"/>
+                    </Border>
+
+                    <Button 
+                        x:Name="Question_Button" 
+                        Click="Button_Click" 
+                        Style="{StaticResource QBtn}"/>
+
+                </StackPanel>
+
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+
+</Window>
